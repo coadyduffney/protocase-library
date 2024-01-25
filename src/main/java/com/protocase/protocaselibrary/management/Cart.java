@@ -1,4 +1,6 @@
-package com.protocase.protocaselibrary;
+package com.protocase.protocaselibrary.management;
+
+import com.protocase.protocaselibrary.fundamental.Book;
 
 import java.util.List;
 

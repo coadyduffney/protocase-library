@@ -1,6 +1,8 @@
 package com.protocase.protocaselibrary;
 
 import com.protocase.protocaselibrary.components.BookCard;
+import com.protocase.protocaselibrary.fundamental.Book;
+import com.protocase.protocaselibrary.interactive.Librarian;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

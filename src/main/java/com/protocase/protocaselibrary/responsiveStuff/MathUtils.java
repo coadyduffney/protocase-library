@@ -1,4 +1,4 @@
-package com.protocase.protocaselibrary;
+package com.protocase.protocaselibrary.responsiveStuff;
 
 public class MathUtils {
 

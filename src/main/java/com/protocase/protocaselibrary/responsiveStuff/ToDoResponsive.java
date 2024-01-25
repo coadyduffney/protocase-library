@@ -1,4 +1,4 @@
-package com.protocase.protocaselibrary;
+package com.protocase.protocaselibrary.responsiveStuff;
 
 import com.protocase.protocaselibrary.components.BootstrapColumn;
 import com.protocase.protocaselibrary.components.BootstrapPane;

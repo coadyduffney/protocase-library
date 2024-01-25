@@ -1,28 +1,21 @@
-package com.protocase.protocaselibrary;
+package com.protocase.protocaselibrary.fundamental;
 
 public class Book {
     private double id;
     private String title;
     private String author;
-    private String description;
-    private String cover_image;
-
-    private String publication_year;
     private String isbn;
-    private String[] genre;
+    private String genre;
     private String location;
 
     public Book() {
 
     }
 
-    public Book(double id, String title, String author, String description, String cover_image, String publication_year, String isbn, String[] genre, String location) {
+    public Book(double id, String title, String author, String isbn, String genre, String location) {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.description = description;
-        this.cover_image = cover_image;
-        this.publication_year = publication_year;
         this.isbn = isbn;
         this.genre = genre;
         this.location = location;
@@ -60,11 +53,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public String[] getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(String[] genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
@@ -76,28 +69,4 @@ public class Book {
         this.location = location;
     }
 
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCover_image() {
-        return cover_image;
-    }
-
-    public void setCover_image(String cover_image) {
-        this.cover_image = cover_image;
-    }
-
-    public String getPublication_year() {
-        return publication_year;
-    }
-
-    public void setPublication_year(String publication_year) {
-        this.publication_year = publication_year;
-    }
 }

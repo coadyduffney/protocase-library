@@ -1,6 +1,6 @@
 package com.protocase.protocaselibrary.components;
 
-import com.protocase.protocaselibrary.Book;
+import com.protocase.protocaselibrary.fundamental.Book;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

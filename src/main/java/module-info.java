@@ -11,4 +11,12 @@ module com.protocase.protocaselibrary {
 
     opens com.protocase.protocaselibrary to javafx.fxml;
     exports com.protocase.protocaselibrary;
+    exports com.protocase.protocaselibrary.fundamental;
+    opens com.protocase.protocaselibrary.fundamental to javafx.fxml;
+    exports com.protocase.protocaselibrary.interactive;
+    opens com.protocase.protocaselibrary.interactive to javafx.fxml;
+    exports com.protocase.protocaselibrary.responsiveStuff;
+    opens com.protocase.protocaselibrary.responsiveStuff to javafx.fxml;
+    exports com.protocase.protocaselibrary.management;
+    opens com.protocase.protocaselibrary.management to javafx.fxml;
 }

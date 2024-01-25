@@ -1,4 +1,4 @@
-package com.protocase.protocaselibrary;
+package com.protocase.protocaselibrary.fundamental;
 
 public class User {
     private String id;
@@ -6,15 +6,12 @@ public class User {
     private String lastName;
     private String email;
 
-    // TODO: implement ROLE
-
     public User(String id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
-
 
     public String getId() {
         return id;

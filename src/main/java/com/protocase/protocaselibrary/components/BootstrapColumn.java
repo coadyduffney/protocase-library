@@ -1,6 +1,6 @@
 package com.protocase.protocaselibrary.components;
 
-import com.protocase.protocaselibrary.MathUtils;
+import com.protocase.protocaselibrary.responsiveStuff.MathUtils;
 import javafx.scene.Node;
 
 public class BootstrapColumn {
