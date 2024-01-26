@@ -2,8 +2,6 @@ package com.protocase.protocaselibrary;
 
 import com.protocase.protocaselibrary.components.BookCard;
 import com.protocase.protocaselibrary.fundamental.Book;
-import com.protocase.protocaselibrary.fundamental.Library;
-import com.protocase.protocaselibrary.interactive.Librarian;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,7 +35,7 @@ public class SearchBookViewController {
 
     public void init() {
 
-        List<Book> bookList = App.library.getInventory();
+        List<Book> bookList = App.LIBRARY.getInventory().getBooks();
         bookList.forEach(book -> {
             BookCard card = new BookCard(book);
             bookContainer.getChildren().add(card);

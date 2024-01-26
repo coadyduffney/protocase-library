@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Cart {
     private static Cart instance;
-    private List<BookCopy> books;
+    private final List<BookCopy> books;
 
     private Cart() {
         this.books = new ArrayList<>();

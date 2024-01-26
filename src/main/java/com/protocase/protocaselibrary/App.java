@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class App extends Application {
-    public static final Library library = new Library();
+    public static final Library LIBRARY = new Library();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -22,7 +22,7 @@ public class App extends Application {
                 "Duffney",
                 "cduffney@protocase.com"
         );
-        library.logIn(user);
+        LIBRARY.logIn(user);
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("hello-view.fxml"));
         BorderPane borderPane = fxmlLoader.load();

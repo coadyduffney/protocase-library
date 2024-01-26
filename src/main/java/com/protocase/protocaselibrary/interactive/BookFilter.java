@@ -13,7 +13,7 @@ public class BookFilter {
     private final List<AbstractBookFilterStrategy> filterStrategies = new ArrayList();
 
     public BookFilter() {
-
+        // TODO document why this constructor is empty
     }
 
     public BookFilter withTitleFilter(String title) {
@@ -46,7 +46,8 @@ public class BookFilter {
     }
 
     public boolean matches(Book book) {
-        return filterStrategies.stream()
+        return filterStrategies
+                .stream()
                 .anyMatch(abstractBookFilterStrategy -> abstractBookFilterStrategy.checkMatch(book));
     }
 }
