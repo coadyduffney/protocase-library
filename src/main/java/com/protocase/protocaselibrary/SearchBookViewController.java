@@ -2,6 +2,7 @@ package com.protocase.protocaselibrary;
 
 import com.protocase.protocaselibrary.components.BookCard;
 import com.protocase.protocaselibrary.fundamental.Book;
+import com.protocase.protocaselibrary.fundamental.Library;
 import com.protocase.protocaselibrary.interactive.Librarian;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,9 +36,8 @@ public class SearchBookViewController {
     private HBox bookContainer;
 
     public void init() {
-//        bookContainer.setAlignment();
 
-        List<Book> bookList = Librarian.fetchBooks();
+        List<Book> bookList = App.library.getInventory();
         bookList.forEach(book -> {
             BookCard card = new BookCard(book);
             bookContainer.getChildren().add(card);

@@ -8,13 +8,13 @@ import com.protocase.protocaselibrary.fundamental.User;
 public class UserSession {
     private User user;
 
-    private UserSession instance;
+    private static UserSession instance;
 
     private UserSession() {
 
     }
 
-    public UserSession getInstance() {
+    public static UserSession getInstance() {
         if (null == instance) {
             instance = new UserSession();
         }

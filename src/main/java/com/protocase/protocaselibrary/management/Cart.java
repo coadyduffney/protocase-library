@@ -1,19 +1,20 @@
 package com.protocase.protocaselibrary.management;
 
 import com.protocase.protocaselibrary.fundamental.Book;
+import com.protocase.protocaselibrary.interactive.BookCopy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-
-    private Cart instance;
-    private List<Book> books;
+    private static Cart instance;
+    private List<BookCopy> books;
 
     private Cart() {
-
+        this.books = new ArrayList<>();
     }
 
-    public Cart getInstance() {
+    public static Cart getInstance() {
         if (instance == null) {
             instance = new Cart();
         }
@@ -21,18 +22,14 @@ public class Cart {
         return instance;
     }
 
-    public void addBook(Book book) {
+    public void addBook(BookCopy book) {
         if (!books.contains(book)) {
             books.add(book);
         }
     }
 
-    public void removeBook(Book book) {
+    public void removeBook(BookCopy book) {
         this.books.remove(book);
-    }
-
-    public void checkout() {
-
     }
 
 }

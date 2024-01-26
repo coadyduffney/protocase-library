@@ -1,12 +1,12 @@
 package com.protocase.protocaselibrary;
 
+import com.protocase.protocaselibrary.fundamental.Library;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 
-public class ProtocaseLibraryAppController {
+public class AppController {
     @FXML
     private BorderPane parentContainer;
 

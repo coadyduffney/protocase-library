@@ -20,4 +20,6 @@ module com.protocase.protocaselibrary {
     opens com.protocase.protocaselibrary.responsiveStuff to javafx.fxml, com.google.gson;
     exports com.protocase.protocaselibrary.management;
     opens com.protocase.protocaselibrary.management to javafx.fxml, com.google.gson;
+    exports com.protocase.protocaselibrary.interactive.strategies;
+    opens com.protocase.protocaselibrary.interactive.strategies to com.google.gson, javafx.fxml;
 }
