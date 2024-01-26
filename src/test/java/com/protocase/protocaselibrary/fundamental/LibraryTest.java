@@ -119,4 +119,19 @@ class LibraryTest {
         assertFalse(books.isEmpty());
         assertEquals(2, books.size());
     }
+
+    @Test
+    void testSearchBookByMultipleFilters() {
+        Library library = new Library();
+
+        BookFilter filter = new BookFilter()
+                .withAuthorFilter("tolkien")
+                .withGenreFilter("fantasy")
+                .build();
+
+        List<Book> books = library.searchBooks(filter);
+        assertFalse(books.isEmpty());
+        assertEquals(2, books.size());
+
+    }
 }

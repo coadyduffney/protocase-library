@@ -38,5 +38,13 @@
     "isbn": "978-0-261-10295-2",
     "genre": "Fantasy",
     "location": "Shelf D"
+  },
+  {
+    "id": "006",
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "isbn": "978-0-261-10320-7",
+    "genre": "Fantasy",
+    "location": "Shelf D"
   }
 ]
