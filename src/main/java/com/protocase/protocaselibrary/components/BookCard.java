@@ -20,8 +20,6 @@ public class BookCard extends VBox {
 
         titleLabel.setText(book.getTitle());
         authorLabel.setText(book.getAuthor());
-        descriptionLabel.setText(book.getDescription());
-        imageView.setImage(new Image(book.getCover_image()));
         imageView.setFitHeight(200);
         imageView.setFitWidth(150);
         imageView.setPreserveRatio(true);

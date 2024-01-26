@@ -39,8 +39,6 @@ public class SearchBookViewController {
 
         List<Book> bookList = Librarian.fetchBooks();
         bookList.forEach(book -> {
-            System.out.println(book.getTitle());
-            System.out.println(book.getCover_image());
             BookCard card = new BookCard(book);
             bookContainer.getChildren().add(card);
         });

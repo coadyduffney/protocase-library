@@ -1,7 +1,7 @@
 package com.protocase.protocaselibrary.fundamental;
 
 public class Book {
-    private double id;
+    private String id;
     private String title;
     private String author;
     private String isbn;
@@ -12,7 +12,7 @@ public class Book {
 
     }
 
-    public Book(double id, String title, String author, String isbn, String genre, String location) {
+    public Book(String id, String title, String author, String isbn, String genre, String location) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -21,11 +21,11 @@ public class Book {
         this.location = location;
     }
 
-    public double getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(String id) {
         this.id = id;
     }
 
