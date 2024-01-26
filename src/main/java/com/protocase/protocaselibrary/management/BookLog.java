@@ -1,16 +1,16 @@
 package com.protocase.protocaselibrary.management;
 
-import com.protocase.protocaselibrary.fundamental.Book;
 import com.protocase.protocaselibrary.interactive.BookCopy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class BookLog {
-    private List<BookCopy> bookHistory;
+    private final List<BookCopy> bookHistory;
 
     public BookLog() {
-
+        bookHistory = new ArrayList<>();
     }
 
     public void addEntry(BookCopy book) {
@@ -25,5 +25,9 @@ public class BookLog {
 
     public void removeEntry(BookCopy book) {
         bookHistory.remove(book);
+    }
+
+    public List<BookCopy> getHistory() {
+        return bookHistory;
     }
 }

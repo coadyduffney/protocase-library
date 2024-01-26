@@ -7,7 +7,6 @@ import com.protocase.protocaselibrary.management.Cart;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,11 +17,11 @@ class LibraryTest {
      * 1. LOAD INVENTORY FROM A TEXT FILE
      * 2. LOG USER IN / LOG USER OUT
      * 3. SEARCH / FILTER BOOKS.
-     *      - Title
-     *      - Author
-     *      - ISBN
-     *      - Genre
-     *      - Location
+         * - Title
+         * - Author
+         * - ISBN
+         * - Genre
+         * - Location
      * 4. CHECKOUT BOOKS.
      */
 
@@ -36,25 +35,14 @@ class LibraryTest {
     @Test
     void testUserLogIn() {
         Library library = new Library();
-
-        User user = new User(UUID.randomUUID().toString(),
-                "Coady",
-                "Duffney",
-                "cduffney@protocase.com");
-        library.logIn(user);
-
+        library.logIn(new TestUser());
         assertNotNull(UserSession.getInstance().getUser());
     }
 
     @Test
     void testUserLogOut() {
         Library library = new Library();
-
-        User user = new User(UUID.randomUUID().toString(),
-                "Coady",
-                "Duffney",
-                "cduffney@protocase.com");
-        library.logIn(user);
+        library.logIn(new TestUser());
 
         library.logOut();
         assertNull(UserSession.getInstance().getUser());
@@ -139,7 +127,7 @@ class LibraryTest {
     @Test
     void testAddBookToCart() {
         Library library = new Library();
-        library.logIn(getDefaultUserForTest());
+        library.logIn(new TestUser());
 
         BookFilter filter = new BookFilter()
                 .withTitleFilter("The Lord of the Rings")
@@ -148,14 +136,15 @@ class LibraryTest {
         List<Book> books = library.searchBooks(filter);
         Book book = books.get(0);
 
-        Cart.getInstance().addBook(new BookCopy(book));
-        assertEquals(1, Cart.getInstance().getBooks().size());
+        Cart cart = Cart.getInstance();
+        cart.addBook(new BookCopy(book));
+        assertEquals(1, cart.getBooks().size());
     }
 
     @Test
     void testRemoveBookFromCart() {
         Library library = new Library();
-        library.logIn(getDefaultUserForTest());
+        library.logIn(new TestUser());
 
         BookFilter filter = new BookFilter()
                 .withTitleFilter("The Lord of the Rings")
@@ -165,18 +154,42 @@ class LibraryTest {
         Book book = books.get(0);
         BookCopy bookCopy = new BookCopy(book);
 
-        Cart.getInstance().addBook(bookCopy);
-        assertEquals(1, Cart.getInstance().getBooks().size());
+        Cart cart = Cart.getInstance();
+        cart.addBook(bookCopy);
+        assertEquals(1, cart.getBooks().size());
 
-        Cart.getInstance().removeBook(bookCopy);
-        assertTrue(Cart.getInstance().getBooks().isEmpty());
+        cart.removeBook(bookCopy);
+        assertTrue(cart.getBooks().isEmpty());
     }
 
-    private User getDefaultUserForTest() {
-        return new User(
-                UUID.randomUUID().toString(),
-                "Coady", "Duffney",
-                "cduffney@protocase.com"
-        );
+    @Test
+    void testCheckoutBook() {
+        Library library = new Library();
+        library.logIn(new TestUser());
+
+        BookFilter filter = new BookFilter()
+                .withTitleFilter("The Lord of the Rings")
+                .build();
+
+        List<Book> books = library.searchBooks(filter);
+        Book book = books.get(0);
+        BookCopy bookCopy = new BookCopy(book);
+
+        Cart cart = Cart.getInstance();
+        cart.addBook(bookCopy);
+
+        List<BookCopy> history = library.getBookLog().getHistory();
+        assertEquals(0, history.size());
+
+        library.checkOutBooks(cart.getBooks());
+        assertEquals(1, history.size());
+
+        BookCopy bookLogEntry = history.get(0);
+        String checkInDate = bookLogEntry.getCheckInDate();
+        String checkOutDate = bookLogEntry.getCheckOutDate();
+
+        assertFalse(checkInDate.isEmpty());
+        assertFalse(checkOutDate.isEmpty());
     }
+
 }

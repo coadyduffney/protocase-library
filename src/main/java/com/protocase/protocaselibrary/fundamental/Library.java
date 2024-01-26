@@ -2,6 +2,7 @@ package com.protocase.protocaselibrary.fundamental;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.protocase.protocaselibrary.interactive.BookCopy;
 import com.protocase.protocaselibrary.interactive.BookFilter;
 import com.protocase.protocaselibrary.interactive.Librarian;
 import com.protocase.protocaselibrary.interactive.UserSession;
@@ -10,7 +11,10 @@ import com.protocase.protocaselibrary.management.BookLog;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,5 +59,25 @@ public class Library {
 
     public List<Book> searchBooks(BookFilter bookFilter) {
         return librarian.searchBooks(bookFilter);
+    }
+
+    public BookLog getBookLog() {
+        return bookLog;
+    }
+
+    public void checkOutBooks(List<BookCopy> books) {
+        for (BookCopy bookCopy : books) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            LocalDate checkOutDate = LocalDate.now();
+            String formattedCheckOut = checkOutDate.format(formatter);
+
+            LocalDate checkInDate = checkOutDate.plusDays(14);
+            String formattedCheckInDate = checkInDate.format(formatter);
+
+            bookCopy.setCheckOutDate(formattedCheckOut);
+            bookCopy.setCheckInDate(formattedCheckInDate);
+            bookLog.addEntry(bookCopy);
+        }
     }
 }
