@@ -1,6 +1,5 @@
 package com.protocase.protocaselibrary.management;
 
-import com.protocase.protocaselibrary.fundamental.Book;
 import com.protocase.protocaselibrary.interactive.BookCopy;
 
 import java.util.ArrayList;
@@ -30,6 +29,10 @@ public class Cart {
 
     public void removeBook(BookCopy book) {
         this.books.remove(book);
+    }
+
+    public List<BookCopy> getBooks() {
+        return books;
     }
 
 }

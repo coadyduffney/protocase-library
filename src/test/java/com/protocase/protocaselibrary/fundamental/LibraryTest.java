@@ -1,7 +1,9 @@
 package com.protocase.protocaselibrary.fundamental;
 
+import com.protocase.protocaselibrary.interactive.BookCopy;
 import com.protocase.protocaselibrary.interactive.BookFilter;
 import com.protocase.protocaselibrary.interactive.UserSession;
+import com.protocase.protocaselibrary.management.Cart;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -132,6 +134,49 @@ class LibraryTest {
         List<Book> books = library.searchBooks(filter);
         assertFalse(books.isEmpty());
         assertEquals(2, books.size());
+    }
 
+    @Test
+    void testAddBookToCart() {
+        Library library = new Library();
+        library.logIn(getDefaultUserForTest());
+
+        BookFilter filter = new BookFilter()
+                .withTitleFilter("The Lord of the Rings")
+                .build();
+
+        List<Book> books = library.searchBooks(filter);
+        Book book = books.get(0);
+
+        Cart.getInstance().addBook(new BookCopy(book));
+        assertEquals(1, Cart.getInstance().getBooks().size());
+    }
+
+    @Test
+    void testRemoveBookFromCart() {
+        Library library = new Library();
+        library.logIn(getDefaultUserForTest());
+
+        BookFilter filter = new BookFilter()
+                .withTitleFilter("The Lord of the Rings")
+                .build();
+
+        List<Book> books = library.searchBooks(filter);
+        Book book = books.get(0);
+        BookCopy bookCopy = new BookCopy(book);
+
+        Cart.getInstance().addBook(bookCopy);
+        assertEquals(1, Cart.getInstance().getBooks().size());
+
+        Cart.getInstance().removeBook(bookCopy);
+        assertTrue(Cart.getInstance().getBooks().isEmpty());
+    }
+
+    private User getDefaultUserForTest() {
+        return new User(
+                UUID.randomUUID().toString(),
+                "Coady", "Duffney",
+                "cduffney@protocase.com"
+        );
     }
 }

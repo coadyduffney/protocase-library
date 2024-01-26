@@ -1,5 +1,9 @@
 package com.protocase.protocaselibrary.interactive;
 
+import com.protocase.protocaselibrary.fundamental.Book;
+
+import java.util.UUID;
+
 /**
  * @author Coady Duffney
  */
@@ -10,12 +14,12 @@ public class BookCopy {
     private String checkInDate;
     private String checkOutDate;
 
-    public BookCopy(String id, String bookId, String userId, String checkInDate, String checkOutDate) {
-        this.id = id;
-        this.bookId = bookId;
-        this.userId = userId;
-        this.checkInDate = checkInDate;
-        this.checkOutDate = checkOutDate;
+    public BookCopy(Book book) {
+        this.id = UUID.randomUUID().toString();
+        this.bookId = book.getId();
+        this.userId = UserSession.getInstance().getUser().getId();
+        this.checkInDate = "";
+        this.checkOutDate = "";
     }
 
     public String getId() {
