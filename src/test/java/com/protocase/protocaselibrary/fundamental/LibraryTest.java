@@ -28,7 +28,7 @@ class LibraryTest {
     @Test
     void testLoadInventory() {
         Library library = new Library();
-        List<Book> inventory = library.getInventory();
+        List<Book> inventory = library.getInventory().getBooks();
         assertFalse(inventory.isEmpty());
     }
 
@@ -56,7 +56,7 @@ class LibraryTest {
                 .withTitleFilter("The Hobbit")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
     }
 
@@ -68,7 +68,7 @@ class LibraryTest {
                 .withAuthorFilter("J.D. Salinger")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
     }
 
@@ -80,7 +80,7 @@ class LibraryTest {
                 .withIsbnFilter("978-0-06-112008-4")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
     }
 
@@ -92,7 +92,7 @@ class LibraryTest {
                 .withGenreFilter("Classics")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
         assertEquals(2, books.size());
     }
@@ -105,7 +105,7 @@ class LibraryTest {
                 .withLocationFilter("Shelf B")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
         assertEquals(2, books.size());
     }
@@ -119,7 +119,7 @@ class LibraryTest {
                 .withGenreFilter("fantasy")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
         assertEquals(2, books.size());
     }
@@ -133,10 +133,12 @@ class LibraryTest {
                 .withTitleFilter("The Lord of the Rings")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         Book book = books.get(0);
 
         Cart cart = Cart.getInstance();
+        cart.getBooks().clear();
+
         cart.addBook(new BookCopy(book));
         assertEquals(1, cart.getBooks().size());
     }
@@ -150,11 +152,13 @@ class LibraryTest {
                 .withTitleFilter("The Lord of the Rings")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         Book book = books.get(0);
         BookCopy bookCopy = new BookCopy(book);
 
         Cart cart = Cart.getInstance();
+        cart.getBooks().clear();
+
         cart.addBook(bookCopy);
         assertEquals(1, cart.getBooks().size());
 
@@ -171,7 +175,7 @@ class LibraryTest {
                 .withTitleFilter("The Lord of the Rings")
                 .build();
 
-        List<Book> books = library.searchBooks(filter);
+        List<Book> books = library.getLibrarian().searchBooks(filter);
         Book book = books.get(0);
         BookCopy bookCopy = new BookCopy(book);
 
