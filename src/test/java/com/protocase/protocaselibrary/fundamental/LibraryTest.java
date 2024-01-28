@@ -51,10 +51,7 @@ class LibraryTest {
     @Test
     void testSearchBookByTitle() {
         Library library = new Library();
-
-        BookFilter filter = new BookFilter()
-                .withTitleFilter("The Hobbit")
-                .build();
+        BookFilter filter = new BookFilter("The Hobbit");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
@@ -64,9 +61,7 @@ class LibraryTest {
     void testSearchBookByAuthor() {
         Library library = new Library();
 
-        BookFilter filter = new BookFilter()
-                .withAuthorFilter("J.D. Salinger")
-                .build();
+        BookFilter filter = new BookFilter("J.D. Salinger");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
@@ -76,9 +71,7 @@ class LibraryTest {
     void testSearchBookByIsbn() {
         Library library = new Library();
 
-        BookFilter filter = new BookFilter()
-                .withIsbnFilter("978-0-06-112008-4")
-                .build();
+        BookFilter filter = new BookFilter("978-0-06-112008-4");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
@@ -88,9 +81,7 @@ class LibraryTest {
     void testSearchBookByGenre() {
         Library library = new Library();
 
-        BookFilter filter = new BookFilter()
-                .withGenreFilter("Classics")
-                .build();
+        BookFilter filter = new BookFilter("Classics");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
@@ -101,23 +92,7 @@ class LibraryTest {
     void testSearchBookByLocation() {
         Library library = new Library();
 
-        BookFilter filter = new BookFilter()
-                .withLocationFilter("Shelf B")
-                .build();
-
-        List<Book> books = library.getLibrarian().searchBooks(filter);
-        assertFalse(books.isEmpty());
-        assertEquals(2, books.size());
-    }
-
-    @Test
-    void testSearchBookByMultipleFilters() {
-        Library library = new Library();
-
-        BookFilter filter = new BookFilter()
-                .withAuthorFilter("tolkien")
-                .withGenreFilter("fantasy")
-                .build();
+        BookFilter filter = new BookFilter("Shelf B");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
         assertFalse(books.isEmpty());
@@ -129,9 +104,7 @@ class LibraryTest {
         Library library = new Library();
         library.logIn(new TestUser());
 
-        BookFilter filter = new BookFilter()
-                .withTitleFilter("The Lord of the Rings")
-                .build();
+        BookFilter filter = new BookFilter("The Lord of the Rings");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
         Book book = books.get(0);
@@ -148,9 +121,7 @@ class LibraryTest {
         Library library = new Library();
         library.logIn(new TestUser());
 
-        BookFilter filter = new BookFilter()
-                .withTitleFilter("The Lord of the Rings")
-                .build();
+        BookFilter filter = new BookFilter("The Lord of the Rings");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
         Book book = books.get(0);
@@ -171,9 +142,7 @@ class LibraryTest {
         Library library = new Library();
         library.logIn(new TestUser());
 
-        BookFilter filter = new BookFilter()
-                .withTitleFilter("The Lord of the Rings")
-                .build();
+        BookFilter filter = new BookFilter("The Lord of the Rings");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
         Book book = books.get(0);

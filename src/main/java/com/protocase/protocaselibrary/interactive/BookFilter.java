@@ -12,37 +12,12 @@ import java.util.List;
 public class BookFilter {
     private final List<AbstractBookFilterStrategy> filterStrategies = new ArrayList();
 
-    public BookFilter() {
-        // TODO document why this constructor is empty
-    }
-
-    public BookFilter withTitleFilter(String title) {
-        filterStrategies.add(new TitleBookFilterStrategy(title));
-        return this;
-    }
-
-    public BookFilter withAuthorFilter(String author) {
-        filterStrategies.add(new AuthorBookFilterStrategy(author));
-        return this;
-    }
-
-    public BookFilter withIsbnFilter(String isbn) {
-        filterStrategies.add(new IsbnBookFilterStrategy(isbn));
-        return this;
-    }
-
-    public BookFilter withGenreFilter(String genre) {
-        filterStrategies.add(new GenreBookFilterStrategy(genre));
-        return this;
-    }
-
-    public BookFilter withLocationFilter(String location) {
-        filterStrategies.add(new LocationBookFilterStrategy(location));
-        return this;
-    }
-
-    public BookFilter build() {
-        return this;
+    public BookFilter(String stringToFilter) {
+        filterStrategies.add(new TitleBookFilterStrategy(stringToFilter));
+        filterStrategies.add(new AuthorBookFilterStrategy(stringToFilter));
+        filterStrategies.add(new IsbnBookFilterStrategy(stringToFilter));
+        filterStrategies.add(new GenreBookFilterStrategy(stringToFilter));
+        filterStrategies.add(new LocationBookFilterStrategy(stringToFilter));
     }
 
     public boolean matches(Book book) {
