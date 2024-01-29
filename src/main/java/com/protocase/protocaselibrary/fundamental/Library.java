@@ -54,9 +54,12 @@ public class Library {
             LocalDate checkInDate = checkOutDate.plusDays(14);
             String formattedCheckInDate = checkInDate.format(formatter);
 
+            bookCopy.setUserId(UserSession.getInstance().getUser().getId());
             bookCopy.setCheckOutDate(formattedCheckOut);
             bookCopy.setCheckInDate(formattedCheckInDate);
             bookLog.addEntry(bookCopy);
         }
+
+        books.clear();
     }
 }

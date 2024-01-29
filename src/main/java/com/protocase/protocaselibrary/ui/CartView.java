@@ -1,4 +1,4 @@
-package com.protocase.protocaselibrary.uicomponents;
+package com.protocase.protocaselibrary.ui;
 
 import com.protocase.protocaselibrary.App;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +27,7 @@ public class CartView extends Stage {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cartView.fxml"));
             BorderPane borderPane = fxmlLoader.load();
             controller = fxmlLoader.getController();
-            controller.init();
+            controller.init(this);
 
             setScene(new Scene(borderPane));
 

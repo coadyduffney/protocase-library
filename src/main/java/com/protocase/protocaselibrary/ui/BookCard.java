@@ -1,4 +1,4 @@
-package com.protocase.protocaselibrary.uicomponents;
+package com.protocase.protocaselibrary.ui;
 
 import com.protocase.protocaselibrary.fundamental.Book;
 import javafx.fxml.FXMLLoader;

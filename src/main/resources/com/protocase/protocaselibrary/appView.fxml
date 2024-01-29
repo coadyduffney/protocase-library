@@ -39,7 +39,7 @@
                         </Label>
                      </children>
                   </StackPane>
-                  <Button fx:id="logInButton" mnemonicParsing="false" prefWidth="100.0" text="Log In">
+                  <Button fx:id="logInButton" mnemonicParsing="false" onAction="#onLoginLogout" prefWidth="100.0" text="Log In">
                      <graphic>
                         <FontIcon iconLiteral="fas-user" />
                      </graphic></Button>

@@ -1,4 +1,4 @@
-package com.protocase.protocaselibrary.uicomponents;
+package com.protocase.protocaselibrary.ui;
 
 import com.protocase.protocaselibrary.App;
 import com.protocase.protocaselibrary.fundamental.Book;

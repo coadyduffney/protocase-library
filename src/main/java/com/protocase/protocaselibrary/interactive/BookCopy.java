@@ -17,7 +17,6 @@ public class BookCopy {
     public BookCopy(Book book) {
         this.id = UUID.randomUUID().toString();
         this.originalBook = book;
-        this.userId = UserSession.getInstance().getUser().getId();
         this.checkInDate = "";
         this.checkOutDate = "";
     }

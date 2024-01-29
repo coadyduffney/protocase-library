@@ -5,7 +5,6 @@ import com.protocase.protocaselibrary.fundamental.Book;
 import com.protocase.protocaselibrary.fundamental.User;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Librarian {
 
@@ -16,7 +15,7 @@ public class Librarian {
     public List<Book> searchBooks(BookFilter bookFilter) {
         return App.LIBRARY.getInventory().getBooks().stream()
                 .filter(bookFilter::matches)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public void addNewBook(Book book) {

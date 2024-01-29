@@ -1,4 +1,4 @@
-package com.protocase.protocaselibrary.uicomponents;
+package com.protocase.protocaselibrary.ui;
 
 import com.protocase.protocaselibrary.interactive.BookCopy;
 import com.protocase.protocaselibrary.management.Cart;

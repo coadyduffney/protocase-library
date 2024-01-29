@@ -5,16 +5,16 @@ import com.dukescript.layouts.jfxflexbox.FlexBoxPane;
 import com.protocase.protocaselibrary.fundamental.Book;
 import com.protocase.protocaselibrary.interactive.BookFilter;
 import com.protocase.protocaselibrary.interactive.Librarian;
+import com.protocase.protocaselibrary.interactive.UserSession;
 import com.protocase.protocaselibrary.management.Cart;
-import com.protocase.protocaselibrary.uicomponents.BookCard;
-import com.protocase.protocaselibrary.uicomponents.CartView;
+import com.protocase.protocaselibrary.ui.BookCard;
+import com.protocase.protocaselibrary.ui.CartView;
+import com.protocase.protocaselibrary.ui.LoginForm;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -22,30 +22,18 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 import java.util.List;
+import java.util.Optional;
 
 public class AppController {
     private Librarian librarian;
 
     @FXML
     private Label cartItemsBadge;
-
-    @FXML
-    private HBox buttonContainer;
-
-    @FXML
-    private Button cartButton;
-
     @FXML
     private Button logInButton;
 
     @FXML
     private BorderPane mainBorderPane;
-
-    @FXML
-    private Button searchButton;
-
-    @FXML
-    private HBox searchContainer;
 
     @FXML
     private TextField searchField;
@@ -100,11 +88,35 @@ public class AppController {
         cartView.show();
     }
 
+    @FXML
+    void onLoginLogout() {
+
+        if (UserSession.getInstance().getUser() == null) {
+            LoginForm loginForm = new LoginForm();
+            Optional<Boolean> loginResult = loginForm.showAndWait();
+
+            if (loginResult.isPresent() && loginResult.get()) {
+                // User login successful.
+                logInButton.setText("Log Out");
+            }
+
+        } else {
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setTitle("Log Out?");
+            confirm.setContentText("Are you sure you want to log out?");
+            Optional<ButtonType> buttonType = confirm.showAndWait();
+
+            if (buttonType.isPresent() && buttonType.get() == ButtonType.OK) {
+                App.LIBRARY.logOut();
+                logInButton.setText("Log In");
+            }
+        }
+    }
+
     private void populateBookGrid(List<Book> books) {
 
         if (books.isEmpty()) {
             // show no results found.
-
             Label label = new Label("No results found");
             label.setFont(new Font("Segoe UI", 24));
             HBox labelContainer = new HBox();
