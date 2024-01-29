@@ -19,7 +19,7 @@
          <children>
             <HBox fx:id="buttonContainer" alignment="TOP_RIGHT" spacing="5.0" VBox.vgrow="NEVER">
                <children>
-                  <StackPane alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" styleClass="badge" stylesheets="@../../../css/styles.css">
+                  <StackPane alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="30.0" styleClass="badge" stylesheets="@../../../css/styles.css">
                      <children>
                         <Button fx:id="cartButton" mnemonicParsing="false" prefWidth="100.0" text="My Cart" StackPane.alignment="TOP_RIGHT">
                            <graphic>

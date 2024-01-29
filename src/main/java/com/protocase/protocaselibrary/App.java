@@ -3,6 +3,7 @@ package com.protocase.protocaselibrary;
 import com.protocase.protocaselibrary.fundamental.Library;
 import com.protocase.protocaselibrary.fundamental.User;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -29,11 +30,12 @@ public class App extends Application {
         controller.init();
 
         Scene scene = new Scene(borderPane);
-//        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("Protocase Library");
         stage.setScene(scene);
         stage.sizeToScene();
         stage.show();
+
+        Platform.runLater(borderPane::requestFocus);
     }
 
     public static void main(String[] args) {
