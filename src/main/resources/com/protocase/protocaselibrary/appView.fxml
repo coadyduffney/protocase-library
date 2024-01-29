@@ -45,15 +45,28 @@
                      </graphic></Button>
                </children>
             </HBox>
-            <HBox fx:id="searchContainer" alignment="CENTER" spacing="5.0" style="-fx-background-radius: 50%;">
+            <VBox>
                <children>
-                  <TextField fx:id="searchField" prefHeight="25.0" prefWidth="221.0" promptText="Search by title, author, genre, isbn...." />
-                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchBooks" text="Search" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="Proto-Books">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="searchContainer" alignment="CENTER" spacing="5.0" style="-fx-background-radius: 50%;">
+                     <children>
+                        <TextField fx:id="searchField" prefHeight="25.0" prefWidth="221.0" promptText="Search by title, author, genre, isbn...." />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchBooks" text="Search" />
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" top="15.0" />
+                     </padding>
+                  </HBox>
                </children>
-               <padding>
-                  <Insets bottom="15.0" top="15.0" />
-               </padding>
-            </HBox>
+            </VBox>
             <Separator prefWidth="200.0" />
          </children>
          <BorderPane.margin>
