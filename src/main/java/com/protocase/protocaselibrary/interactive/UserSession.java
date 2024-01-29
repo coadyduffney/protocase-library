@@ -6,6 +6,7 @@ import com.protocase.protocaselibrary.fundamental.User;
  * @author Coady Duffney
  */
 public class UserSession {
+    // TODO: store boolean property "userLoggedIn" so we can bind our button text to it.
     private User user;
 
     private static UserSession instance;
