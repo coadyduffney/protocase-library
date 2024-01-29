@@ -25,8 +25,7 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'com.protocase.protocaselibrary'
-    mainClass = 'com.protocase.protocaselibrary.ProtocaseLibraryApp'
+    mainClass = 'com.protocase.protocaselibrary.App'
 }
 
 javafx {

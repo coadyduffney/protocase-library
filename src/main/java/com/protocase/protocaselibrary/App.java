@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -24,13 +23,13 @@ public class App extends Application {
         );
         LIBRARY.logIn(user);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("appView.fxml"));
         BorderPane borderPane = fxmlLoader.load();
         AppController controller = fxmlLoader.getController();
         controller.init();
 
         Scene scene = new Scene(borderPane);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+//        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("Protocase Library");
         stage.setScene(scene);
         stage.sizeToScene();

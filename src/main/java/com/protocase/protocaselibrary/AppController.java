@@ -1,26 +1,60 @@
 package com.protocase.protocaselibrary;
 
-import com.protocase.protocaselibrary.fundamental.Library;
+import com.protocase.protocaselibrary.fundamental.Book;
+import com.protocase.protocaselibrary.interactive.BookFilter;
+import com.protocase.protocaselibrary.interactive.Librarian;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
+import java.util.List;
 
 public class AppController {
-    @FXML
-    private BorderPane parentContainer;
+    private Librarian librarian;
 
     @FXML
-    private Tab profileTab;
+    private VBox bookContainer;
 
     @FXML
-    private Tab searchTab;
+    private HBox buttonContainer;
 
     @FXML
-    private TabPane tabbedPane;
+    private Button cartButton;
+
+    @FXML
+    private Button logInButton;
+
+    @FXML
+    private BorderPane mainBorderPane;
+
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private HBox searchContainer;
+
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    void searchBooks(ActionEvent event) {
+        bookContainer.getChildren().clear();
+
+        String searchString = searchField.getText();
+
+        List<Book> bookResults = librarian.searchBooks(new BookFilter(searchString));
+        for (Book bookResult : bookResults) {
+            bookContainer.getChildren().add(new Label(bookResult.getTitle()));
+        }
+
+    }
 
     public void init() {
-        SearchBookView searchBookView = new SearchBookView();
-        searchTab.setContent(searchBookView.getComponent());
+        this.librarian = App.LIBRARY.getLibrarian();
     }
 }
