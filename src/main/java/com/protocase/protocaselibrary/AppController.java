@@ -3,10 +3,13 @@ package com.protocase.protocaselibrary;
 import com.protocase.protocaselibrary.fundamental.Book;
 import com.protocase.protocaselibrary.interactive.BookFilter;
 import com.protocase.protocaselibrary.interactive.Librarian;
+import com.protocase.protocaselibrary.management.Cart;
 import com.protocase.protocaselibrary.uicomponents.BookCard;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -18,6 +21,9 @@ public class AppController {
 
     @FXML
     private HBox bookContainer;
+
+    @FXML
+    private Label cartItemsBadge;
 
     @FXML
     private HBox buttonContainer;
@@ -55,6 +61,9 @@ public class AppController {
 
     public void init() {
         this.librarian = App.LIBRARY.getLibrarian();
+
+        cartItemsBadge.textProperty().bind(Bindings.size(Cart.getInstance().getBooks()).asString());
+
         List<Book> books = App.LIBRARY.getInventory().getBooks();
 
         for (Book book : books) {

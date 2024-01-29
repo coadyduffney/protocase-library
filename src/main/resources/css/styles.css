@@ -1,8 +1,9 @@
 .badge-label {
-    -fx-background-color: red;
+    -fx-background-color: #0460b1;
     -fx-text-fill: white;
+    -fx-background-insets: 2px;
     -fx-padding: 2px 5px;
-    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 .badge {

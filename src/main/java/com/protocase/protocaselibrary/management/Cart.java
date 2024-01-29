@@ -1,16 +1,14 @@
 package com.protocase.protocaselibrary.management;
 
 import com.protocase.protocaselibrary.interactive.BookCopy;
-
-import java.util.ArrayList;
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
     private static Cart instance;
-    private final List<BookCopy> books;
+    private final ObservableList<BookCopy> bookList = FXCollections.observableArrayList();
 
     private Cart() {
-        this.books = new ArrayList<>();
     }
 
     public static Cart getInstance() {
@@ -22,17 +20,17 @@ public class Cart {
     }
 
     public void addBook(BookCopy book) {
-        if (!books.contains(book)) {
-            books.add(book);
+        if (!bookList.contains(book)) {
+            bookList.add(book);
         }
     }
 
     public void removeBook(BookCopy book) {
-        this.books.remove(book);
+        this.bookList.add(book);
     }
 
-    public List<BookCopy> getBooks() {
-        return books;
+    public ObservableList<BookCopy> getBooks() {
+        return bookList;
     }
 
 }
