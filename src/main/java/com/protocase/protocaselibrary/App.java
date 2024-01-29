@@ -33,6 +33,8 @@ public class App extends Application {
         stage.setTitle("Protocase Library");
         stage.setScene(scene);
         stage.sizeToScene();
+        stage.setMinHeight(600);
+        stage.setMinWidth(800);
         stage.show();
 
         Platform.runLater(borderPane::requestFocus);

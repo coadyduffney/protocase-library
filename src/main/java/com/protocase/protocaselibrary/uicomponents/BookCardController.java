@@ -38,6 +38,7 @@ public class BookCardController {
         authorLabel.setText(book.getAuthor());
         genreLabel.setText(book.getGenre());
         locationLabel.setText(book.getLocation());
+
     }
 
 }
