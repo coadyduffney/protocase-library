@@ -9,14 +9,14 @@ import java.util.UUID;
  */
 public class BookCopy {
     private String id;
-    private String bookId;
+    private final Book originalBook;
     private String userId;
     private String checkInDate;
     private String checkOutDate;
 
     public BookCopy(Book book) {
         this.id = UUID.randomUUID().toString();
-        this.bookId = book.getId();
+        this.originalBook = book;
         this.userId = UserSession.getInstance().getUser().getId();
         this.checkInDate = "";
         this.checkOutDate = "";
@@ -30,12 +30,8 @@ public class BookCopy {
         this.id = id;
     }
 
-    public String getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
+    public Book getOriginal() {
+        return originalBook;
     }
 
     public String getUserId() {

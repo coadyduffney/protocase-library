@@ -21,7 +21,7 @@
                <children>
                   <StackPane alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="30.0" styleClass="badge" stylesheets="@../../../css/styles.css">
                      <children>
-                        <Button fx:id="cartButton" mnemonicParsing="false" prefWidth="100.0" text="My Cart" StackPane.alignment="TOP_RIGHT">
+                        <Button fx:id="cartButton" mnemonicParsing="false" onAction="#openCart" prefWidth="100.0" text="My Cart" StackPane.alignment="TOP_RIGHT">
                            <graphic>
                               <FontIcon iconLiteral="fas-shopping-cart" />
                            </graphic>

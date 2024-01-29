@@ -7,16 +7,19 @@ import com.protocase.protocaselibrary.interactive.BookFilter;
 import com.protocase.protocaselibrary.interactive.Librarian;
 import com.protocase.protocaselibrary.management.Cart;
 import com.protocase.protocaselibrary.uicomponents.BookCard;
+import com.protocase.protocaselibrary.uicomponents.CartView;
 import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 import java.util.List;
 
@@ -52,6 +55,18 @@ public class AppController {
         // Set up Librarian
         this.librarian = App.LIBRARY.getLibrarian();
 
+        // Set up key listener on searchField
+        searchField.setOnKeyPressed(ev -> {
+            if (ev.getCode() == KeyCode.ENTER) {
+                searchBooks();
+            }
+
+            if (ev.getCode() == KeyCode.ESCAPE) {
+                searchField.setText("");
+                searchBooks(); // Clear our book grid to default
+            }
+        });
+
         // Bind our number of cart items to our label badge inside Cart button.
         cartItemsBadge.textProperty().bind(Bindings.size(Cart.getInstance().getBooks()).asString());
 
@@ -71,7 +86,7 @@ public class AppController {
     }
 
     @FXML
-    void searchBooks(ActionEvent event) {
+    void searchBooks() {
         bookGrid.getChildren().clear();
 
         String searchString = searchField.getText();
@@ -79,13 +94,34 @@ public class AppController {
         populateBookGrid(searchResults);
     }
 
-    private void populateBookGrid(List<Book> books) {
-        for (Book book : books) {
-            BookCard bookCard = new BookCard(book);
-            VBox node = bookCard.getNode();
+    @FXML
+    void openCart() {
+        CartView cartView = new CartView();
+        cartView.show();
+    }
 
-            FlexBoxPane.setMargin(node, new Insets(5));
-            bookGrid.getChildren().add(node);
+    private void populateBookGrid(List<Book> books) {
+
+        if (books.isEmpty()) {
+            // show no results found.
+
+            Label label = new Label("No results found");
+            label.setFont(new Font("Segoe UI", 24));
+            HBox labelContainer = new HBox();
+            labelContainer.setAlignment(Pos.CENTER);
+            labelContainer.getChildren().add(label);
+
+            bookGrid.getChildren().add(labelContainer);
+
+        } else {
+            for (Book book : books) {
+                BookCard bookCard = new BookCard(book);
+                VBox node = bookCard.getNode();
+
+                FlexBoxPane.setMargin(node, new Insets(5));
+                bookGrid.getChildren().add(node);
+            }
         }
+
     }
 }
