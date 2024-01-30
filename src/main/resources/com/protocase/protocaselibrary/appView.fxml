@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.protocase.protocaselibrary.AppController">
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.protocase.protocaselibrary.AppController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -39,9 +39,14 @@
                         </Label>
                      </children>
                   </StackPane>
-                  <Button fx:id="logInButton" mnemonicParsing="false" onAction="#onLoginLogout" prefWidth="100.0" text="Log In">
+                  <Button fx:id="profileButton" layoutX="690.0" layoutY="10.0" mnemonicParsing="false" onAction="#onProfile" prefWidth="100.0" text="My Profile">
                      <graphic>
                         <FontIcon iconLiteral="fas-user" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="logInButton" mnemonicParsing="false" onAction="#onLoginLogout" prefWidth="100.0" text="Log In">
+                     <graphic>
+                        <FontIcon fx:id="logInIcon" iconLiteral="fas-sign-in-alt" />
                      </graphic></Button>
                </children>
             </HBox>

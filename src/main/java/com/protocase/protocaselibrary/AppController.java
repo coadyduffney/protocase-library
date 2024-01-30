@@ -21,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +33,10 @@ public class AppController {
     private Label cartItemsBadge;
     @FXML
     private Button logInButton;
+    @FXML
+    private FontIcon logInIcon;
+    @FXML
+    private Button profileButton;
 
     @FXML
     private BorderPane mainBorderPane;
@@ -45,7 +50,6 @@ public class AppController {
         this.librarian = Library.getInstance().getLibrarian();
 
         // Set up key listener on searchField
-
         searchField.setOnKeyTyped(keyEvent -> {
             searchBooks();
         });
@@ -57,8 +61,10 @@ public class AppController {
         UserSession.getInstance().getUserLoggedInProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 logInButton.setText("Log Out");
+                logInIcon.setIconLiteral("fas-sign-out-alt");
             } else {
                 logInButton.setText("Log In");
+                logInIcon.setIconLiteral("fas-sign-in-alt");
             }
         });
 
