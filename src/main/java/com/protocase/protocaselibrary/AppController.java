@@ -10,6 +10,7 @@ import com.protocase.protocaselibrary.management.Cart;
 import com.protocase.protocaselibrary.ui.BookCard;
 import com.protocase.protocaselibrary.ui.CartView;
 import com.protocase.protocaselibrary.ui.LoginForm;
+import com.protocase.protocaselibrary.ui.NotificationHelper;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -70,6 +71,7 @@ public class AppController {
         // Set up the responsive book grid.
         initializeBookGrid();
     }
+
     private void initializeBookGrid() {
         bookGrid = new FlexBoxPane();
         bookGrid.setAlignContent(FlexboxLayout.ALIGN_CONTENT_CENTER);
@@ -98,19 +100,29 @@ public class AppController {
 
     @FXML
     void onLoginLogout() {
-
-        if (UserSession.getInstance().getUser() == null) {
-            new LoginForm().show();
-
+        if (UserSession.getInstance().isUserLoggedIn()) {
+            handleLogOut();
         } else {
-            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
-            confirm.setTitle("Log Out?");
-            confirm.setContentText("Are you sure you want to log out?");
-            Optional<ButtonType> buttonType = confirm.showAndWait();
+            handleLogIn();
+        }
+    }
 
-            if (buttonType.isPresent() && buttonType.get() == ButtonType.OK) {
-                App.LIBRARY.logOut();
-            }
+    private void handleLogOut() {
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Log Out?");
+        confirm.setContentText("Are you sure you want to log out?");
+        Optional<ButtonType> buttonType = confirm.showAndWait();
+
+        if (buttonType.isPresent() && buttonType.get() == ButtonType.OK) {
+            NotificationHelper.showLogOutNotification();
+            App.LIBRARY.logOut();
+        }
+    }
+
+    private void handleLogIn() {
+        Optional<Boolean> loginResult = new LoginForm().showAndWait();
+        if (loginResult.isPresent() && loginResult.get()) {
+            NotificationHelper.showLogInNotification();
         }
     }
 

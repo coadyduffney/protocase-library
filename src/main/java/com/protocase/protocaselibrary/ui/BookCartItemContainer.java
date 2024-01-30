@@ -24,9 +24,6 @@ public class BookCartItemContainer {
 
     public BookCartItemContainer(BookCopy bookCopy, CartViewController cartViewController) {
         this.bookCopy = bookCopy;
-
-        // TODO: refactor this class so it has a listener on the CartViewController
-        // instead of storing controller just for refreshing.
         this.cartViewController = cartViewController;
 
         node = buildView();
