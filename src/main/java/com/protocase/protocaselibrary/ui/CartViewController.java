@@ -1,6 +1,7 @@
 package com.protocase.protocaselibrary.ui;
 
 import com.protocase.protocaselibrary.App;
+import com.protocase.protocaselibrary.fundamental.Library;
 import com.protocase.protocaselibrary.interactive.BookCopy;
 import com.protocase.protocaselibrary.interactive.UserSession;
 import com.protocase.protocaselibrary.management.Cart;
@@ -74,7 +75,7 @@ public class CartViewController {
     }
 
     private void finalizeCheckout() {
-        App.LIBRARY.checkOutBooks(Cart.getInstance().getBooks());
+        Library.getInstance().checkOutBooks(Cart.getInstance().getBooks());
         cartView.close();
 
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);

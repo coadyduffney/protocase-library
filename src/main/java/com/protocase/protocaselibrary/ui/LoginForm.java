@@ -1,6 +1,7 @@
 package com.protocase.protocaselibrary.ui;
 
 import com.protocase.protocaselibrary.App;
+import com.protocase.protocaselibrary.fundamental.Library;
 import com.protocase.protocaselibrary.fundamental.User;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -60,7 +61,7 @@ public class LoginForm extends Dialog<Boolean> {
                     "Duffney",
                     "cduffney@protocase.com"
             );
-            App.LIBRARY.logIn(user);
+            Library.getInstance().logIn(user);
             setResult(true);
         }
     }

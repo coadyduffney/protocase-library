@@ -18,10 +18,20 @@ public class Library {
 
     private final Librarian librarian;
 
-    public Library() {
+    private static Library INSTANCE;
+
+    private Library() {
         bookLog = new BookLog();
         inventory = new BookInventory();
         librarian = new Librarian();
+    }
+
+    public static Library getInstance() {
+        if (null == INSTANCE) {
+            INSTANCE = new Library();
+        }
+
+        return INSTANCE;
     }
 
     public void logIn(User user) {

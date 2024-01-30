@@ -27,21 +27,21 @@ class LibraryTest {
 
     @Test
     void testLoadInventory() {
-        Library library = new Library();
+        Library library = Library.getInstance();
         List<Book> inventory = library.getInventory().getBooks();
         assertFalse(inventory.isEmpty());
     }
 
     @Test
     void testUserLogIn() {
-        Library library = new Library();
+        Library library = Library.getInstance();
         library.logIn(new TestUser());
         assertNotNull(UserSession.getInstance().getUser());
     }
 
     @Test
     void testUserLogOut() {
-        Library library = new Library();
+        Library library = Library.getInstance();
         library.logIn(new TestUser());
 
         library.logOut();
@@ -50,7 +50,7 @@ class LibraryTest {
 
     @Test
     void testSearchBookByTitle() {
-        Library library = new Library();
+        Library library = Library.getInstance();
         BookFilter filter = new BookFilter("The Hobbit");
 
         List<Book> books = library.getLibrarian().searchBooks(filter);
@@ -59,7 +59,7 @@ class LibraryTest {
 
     @Test
     void testSearchBookByAuthor() {
-        Library library = new Library();
+        Library library = Library.getInstance();
 
         BookFilter filter = new BookFilter("J.D. Salinger");
 
@@ -69,7 +69,7 @@ class LibraryTest {
 
     @Test
     void testSearchBookByIsbn() {
-        Library library = new Library();
+        Library library = Library.getInstance();
 
         BookFilter filter = new BookFilter("978-0-06-112008-4");
 
@@ -79,7 +79,7 @@ class LibraryTest {
 
     @Test
     void testSearchBookByGenre() {
-        Library library = new Library();
+        Library library = Library.getInstance();
 
         BookFilter filter = new BookFilter("Classics");
 
@@ -90,7 +90,7 @@ class LibraryTest {
 
     @Test
     void testSearchBookByLocation() {
-        Library library = new Library();
+        Library library = Library.getInstance();
 
         BookFilter filter = new BookFilter("Shelf B");
 
@@ -101,7 +101,7 @@ class LibraryTest {
 
     @Test
     void testAddBookToCart() {
-        Library library = new Library();
+        Library library = Library.getInstance();
         library.logIn(new TestUser());
 
         BookFilter filter = new BookFilter("The Lord of the Rings");
@@ -118,7 +118,7 @@ class LibraryTest {
 
     @Test
     void testRemoveBookFromCart() {
-        Library library = new Library();
+        Library library = Library.getInstance();
         library.logIn(new TestUser());
 
         BookFilter filter = new BookFilter("The Lord of the Rings");
@@ -139,7 +139,7 @@ class LibraryTest {
 
     @Test
     void testCheckoutBook() {
-        Library library = new Library();
+        Library library = Library.getInstance();
         library.logIn(new TestUser());
 
         BookFilter filter = new BookFilter("The Lord of the Rings");

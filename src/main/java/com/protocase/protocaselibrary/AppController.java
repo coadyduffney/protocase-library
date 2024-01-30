@@ -3,6 +3,7 @@ package com.protocase.protocaselibrary;
 import com.dukescript.layouts.flexbox.FlexboxLayout;
 import com.dukescript.layouts.jfxflexbox.FlexBoxPane;
 import com.protocase.protocaselibrary.fundamental.Book;
+import com.protocase.protocaselibrary.fundamental.Library;
 import com.protocase.protocaselibrary.interactive.BookFilter;
 import com.protocase.protocaselibrary.interactive.Librarian;
 import com.protocase.protocaselibrary.interactive.UserSession;
@@ -41,7 +42,7 @@ public class AppController {
 
     public void init() {
         // Set up Librarian
-        this.librarian = App.LIBRARY.getLibrarian();
+        this.librarian = Library.getInstance().getLibrarian();
 
         // Set up key listener on searchField
 
@@ -72,7 +73,7 @@ public class AppController {
         bookGrid.setFlexWrap(FlexboxLayout.FLEX_WRAP_WRAP);
         mainBorderPane.setCenter(bookGrid);
 
-        List<Book> books = App.LIBRARY.getInventory().getBooks();
+        List<Book> books = Library.getInstance().getInventory().getBooks();
         populateBookGrid(books);
     }
 
@@ -108,7 +109,7 @@ public class AppController {
 
         if (buttonType.isPresent() && buttonType.get() == ButtonType.OK) {
             NotificationHelper.showLogOutNotification();
-            App.LIBRARY.logOut();
+            Library.getInstance().logOut();
         }
     }
 

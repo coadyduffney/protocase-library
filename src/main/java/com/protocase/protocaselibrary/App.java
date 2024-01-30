@@ -1,6 +1,5 @@
 package com.protocase.protocaselibrary;
 
-import com.protocase.protocaselibrary.fundamental.Library;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
-    public static final Library LIBRARY = new Library();
     public static Stage WINDOW;
 
     @Override
