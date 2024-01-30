@@ -58,10 +58,18 @@ public class AppController {
         // Bind our number of cart items to our label badge inside Cart button.
         cartItemsBadge.textProperty().bind(Bindings.size(Cart.getInstance().getBooks()).asString());
 
+        // Add listener to our LoggedInProperty of UserSession
+        UserSession.getInstance().getUserLoggedInProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                logInButton.setText("Log Out");
+            } else {
+                logInButton.setText("Log In");
+            }
+        });
+
         // Set up the responsive book grid.
         initializeBookGrid();
     }
-
     private void initializeBookGrid() {
         bookGrid = new FlexBoxPane();
         bookGrid.setAlignContent(FlexboxLayout.ALIGN_CONTENT_CENTER);
@@ -92,13 +100,7 @@ public class AppController {
     void onLoginLogout() {
 
         if (UserSession.getInstance().getUser() == null) {
-            LoginForm loginForm = new LoginForm();
-            Optional<Boolean> loginResult = loginForm.showAndWait();
-
-            if (loginResult.isPresent() && loginResult.get()) {
-                // User login successful.
-                logInButton.setText("Log Out");
-            }
+            new LoginForm().show();
 
         } else {
             Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
@@ -108,7 +110,6 @@ public class AppController {
 
             if (buttonType.isPresent() && buttonType.get() == ButtonType.OK) {
                 App.LIBRARY.logOut();
-                logInButton.setText("Log In");
             }
         }
     }

@@ -28,12 +28,10 @@ public class App extends Application {
                 getClass().getResourceAsStream("/images/favicon-32x32.png")
         ));
 
-        Scene scene = new Scene(borderPane);
+        Scene scene = new Scene(borderPane, 1150, 850);
         stage.setTitle("ProtoBooks");
         stage.setScene(scene);
         stage.sizeToScene();
-        stage.setMinHeight(600);
-        stage.setMinWidth(800);
         stage.show();
 
         Platform.runLater(borderPane::requestFocus);

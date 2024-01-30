@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -20,6 +21,11 @@ public class CartViewController {
 
     @FXML
     private VBox booksContainer;
+    @FXML
+    private Button checkoutButton;
+
+    @FXML
+    private Label cartItemCounterLabel;
 
     private CartView cartView;
 
@@ -33,6 +39,9 @@ public class CartViewController {
         booksContainer.getChildren().clear();
 
         ObservableList<BookCopy> books = Cart.getInstance().getBooks();
+        checkoutButton.setDisable(books.isEmpty());
+
+        cartItemCounterLabel.setText(" (" + books.size() + ")");
 
         if (books.isEmpty()) {
             Label label = new Label("Your shopping cart is empty.");

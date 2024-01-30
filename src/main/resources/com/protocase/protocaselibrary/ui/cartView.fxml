@@ -19,6 +19,11 @@
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </Label>
+            <Label text="" fx:id="cartItemCounterLabel">
+               <font>
+                  <Font name="Segoe UI" size="24.0" />
+               </font>
+            </Label>
          </children>
       </HBox>
    </top>
@@ -42,7 +47,7 @@
    <bottom>
       <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#completeCheckout" text="Complete Check Out" />
+            <Button fx:id="checkoutButton" mnemonicParsing="false" onAction="#completeCheckout" text="Complete Check Out" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

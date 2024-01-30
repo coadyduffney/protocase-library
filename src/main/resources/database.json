@@ -41,10 +41,122 @@
   },
   {
     "id": "006",
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "isbn": "978-0-06-085052-4",
+    "genre": "Dystopian",
+    "location": "Shelf C"
+  },
+  {
+    "id": "007",
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "isbn": "978-1-59308-027-1",
+    "genre": "Adventure",
+    "location": "Shelf E"
+  },
+  {
+    "id": "008",
     "title": "The Lord of the Rings",
     "author": "J.R.R. Tolkien",
-    "isbn": "978-0-261-10320-7",
+    "isbn": "978-0-345-33973-1",
     "genre": "Fantasy",
     "location": "Shelf D"
+  },
+  {
+    "id": "009",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": "978-1-85326-000-4",
+    "genre": "Romance",
+    "location": "Shelf F"
+  },
+  {
+    "id": "010",
+    "title": "The Odyssey",
+    "author": "Homer",
+    "isbn": "978-0-14-303995-2",
+    "genre": "Epic Poetry",
+    "location": "Shelf G"
+  },
+  {
+    "id": "011",
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "isbn": "978-0-553-21227-1",
+    "genre": "Gothic",
+    "location": "Shelf H"
+  },
+  {
+    "id": "012",
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "isbn": "978-0-486-21104-1",
+    "genre": "Children's Literature",
+    "location": "Shelf I"
+  },
+  {
+    "id": "013",
+    "title": "The War of the Worlds",
+    "author": "H.G. Wells",
+    "isbn": "978-0-553-21065-9",
+    "genre": "Science Fiction",
+    "location": "Shelf C"
+  },
+  {
+    "id": "014",
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "isbn": "978-0-553-21244-8",
+    "genre": "Psychological Fiction",
+    "location": "Shelf J"
+  },
+  {
+    "id": "015",
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "isbn": "978-0-14-143957-0",
+    "genre": "Gothic",
+    "location": "Shelf H"
+  },
+  {
+    "id": "016",
+    "title": "One Hundred Years of Solitude",
+    "author": "Gabriel García Márquez",
+    "isbn": "978-0-06-112008-4",
+    "genre": "Magical Realism",
+    "location": "Shelf K"
+  },
+  {
+    "id": "017",
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "isbn": "978-0-06-112008-4",
+    "genre": "Philosophical Fiction",
+    "location": "Shelf L"
+  },
+  {
+    "id": "018",
+    "title": "The Shining",
+    "author": "Stephen King",
+    "isbn": "978-0-385-12167-5",
+    "genre": "Horror",
+    "location": "Shelf M"
+  },
+  {
+    "id": "019",
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "isbn": "978-0-307-38789-9",
+    "genre": "Post-Apocalyptic",
+    "location": "Shelf N"
+  },
+  {
+    "id": "020",
+    "title": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "isbn": "978-0-307-59124-3",
+    "genre": "Mystery",
+    "location": "Shelf O"
   }
 ]
