@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -45,15 +44,9 @@ public class AppController {
         this.librarian = App.LIBRARY.getLibrarian();
 
         // Set up key listener on searchField
-        searchField.setOnKeyPressed(ev -> {
-            if (ev.getCode() == KeyCode.ENTER) {
-                searchBooks();
-            }
 
-            if (ev.getCode() == KeyCode.ESCAPE) {
-                searchField.setText("");
-                searchBooks(); // Clear our book grid to default
-            }
+        searchField.setOnKeyTyped(keyEvent -> {
+            searchBooks();
         });
 
         // Bind our number of cart items to our label badge inside Cart button.
