@@ -1,9 +1,16 @@
 package com.protocase.protocaselibrary.fundamental;
 
+import com.protocase.protocaselibrary.App;
 import com.protocase.protocaselibrary.interactive.BookCopy;
 import com.protocase.protocaselibrary.interactive.Librarian;
 import com.protocase.protocaselibrary.interactive.UserSession;
 import com.protocase.protocaselibrary.management.BookLog;
+import javafx.application.Platform;
+import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,10 +33,32 @@ public class Library {
 
     public void logIn(User user) {
         UserSession.getInstance().setUser(user);
+        Platform.runLater(() -> {
+            Notifications
+                    .create()
+                    .text("Welcome, " + user.getFirstName() + " " + user.getLastName())
+                    .graphic(new ImageView(new Image(getClass().getResourceAsStream("/images/favicon-32x32.png"))))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .owner(App.WINDOW)
+                    .hideAfter(Duration.seconds(1))
+                    .show();
+        });
     }
 
     public void logOut() {
-        UserSession.getInstance().setUser(null);
+        UserSession userSession = UserSession.getInstance();
+        User user = userSession.getUser();
+        userSession.setUser(null);
+        Platform.runLater(() -> {
+            Notifications
+                    .create()
+                    .text("Goodbye, " + user.getFirstName() + " " + user.getLastName())
+                    .graphic(new ImageView(new Image(getClass().getResourceAsStream("/images/favicon-32x32.png"))))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .owner(App.WINDOW)
+                    .hideAfter(Duration.seconds(1))
+                    .show();
+        });
     }
 
     public BookInventory getInventory() {

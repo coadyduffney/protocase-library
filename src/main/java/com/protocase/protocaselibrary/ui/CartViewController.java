@@ -15,8 +15,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-import java.util.Optional;
-
 public class CartViewController {
 
     @FXML
@@ -61,14 +59,10 @@ public class CartViewController {
 
     @FXML
     private void completeCheckout() {
-        if (UserSession.getInstance().getUser() == null) {
+        if (!UserSession.getInstance().isUserLoggedIn()) {
             //prompt for login.
             LoginForm loginForm = new LoginForm();
-            Optional<Boolean> loginResult = loginForm.showAndWait();
-
-            if (loginResult.isPresent() && loginResult.get()) {
-                finalizeCheckout();
-            }
+            loginForm.showAndWait();
         } else {
             finalizeCheckout();
         }

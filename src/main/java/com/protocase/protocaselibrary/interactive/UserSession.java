@@ -25,6 +25,10 @@ public class UserSession {
         return instance;
     }
 
+    public boolean isUserLoggedIn() {
+        return userLoggedInProperty.get();
+    }
+
     public BooleanProperty getUserLoggedInProperty() {
         return userLoggedInProperty;
     }
