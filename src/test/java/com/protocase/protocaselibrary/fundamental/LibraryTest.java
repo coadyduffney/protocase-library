@@ -22,7 +22,8 @@ class LibraryTest {
          * - ISBN
          * - Genre
          * - Location
-     * 4. CHECKOUT BOOKS.
+     * 4. CHECK OUT BOOKS.
+     * 5. CHECK IN BOOKS
      */
 
     @Test
@@ -163,6 +164,35 @@ class LibraryTest {
 
         assertFalse(checkInDate.isEmpty());
         assertFalse(checkOutDate.isEmpty());
+    }
+
+    @Test
+    void testCheckInBook() {
+        Library library = Library.getInstance();
+        TestUser user = new TestUser();
+        library.logIn(user);
+
+        BookFilter filter = new BookFilter("The Lord of the Rings");
+
+        List<Book> books = library.getLibrarian().searchBooks(filter);
+        Book book = books.get(0);
+        BookCopy bookCopy = new BookCopy(book);
+
+        Cart cart = Cart.getInstance();
+        cart.addBook(bookCopy);
+
+        List<BookCopy> history = library.getBookLog().getHistory();
+        assertEquals(0, history.size());
+
+        library.checkOutBooks(cart.getBooks());
+
+        List<BookCopy> historyForUser = library.getBookLog().getHistoryForUser(user);
+        assertEquals(1, historyForUser.size());
+
+        library.checkInBooks(historyForUser);
+
+        historyForUser = library.getBookLog().getHistoryForUser(user);
+        assertEquals(0, historyForUser.size());
     }
 
 }
