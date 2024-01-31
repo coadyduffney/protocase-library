@@ -46,21 +46,33 @@ public class ProfileViewController {
     private void initializeTableView() {
         // Create columns
         TableColumn<BookCopy, String> titleColumn = new TableColumn<>("Title");
+        titleColumn.setPrefWidth(155);
+        titleColumn.setStyle("-fx-alignment: CENTER;");
         titleColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOriginal().getTitle()));
 
         TableColumn<BookCopy, String> authorColumn = new TableColumn<>("Author");
+        authorColumn.setPrefWidth(120);
+        authorColumn.setStyle("-fx-alignment: CENTER;");
         authorColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOriginal().getAuthor()));
 
         TableColumn<BookCopy, String> checkInDateColumn = new TableColumn<>("Check In Date");
+        checkInDateColumn.setPrefWidth(100);
+        checkInDateColumn.setStyle("-fx-alignment: CENTER;");
         checkInDateColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCheckInDate()));
 
         TableColumn<BookCopy, String> checkOutDateColumn = new TableColumn<>("Check Out Date");
+        checkOutDateColumn.setPrefWidth(100);
+        checkOutDateColumn.setStyle("-fx-alignment: CENTER;");
         checkOutDateColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCheckOutDate()));
 
         TableColumn<BookCopy, Boolean> overdueColumn = new TableColumn<>("Overdue");
+        overdueColumn.setPrefWidth(100);
+        overdueColumn.setStyle("-fx-alignment: CENTER;");
         overdueColumn.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isOverdue()));
 
         TableColumn<BookCopy, Boolean> checkInColumn = new TableColumn<>("Check In");
+        checkInColumn.setPrefWidth(100);
+        checkInColumn.setStyle("-fx-alignment: CENTER;");
         checkInColumn.setCellValueFactory(data -> new SimpleBooleanProperty(selectedBooks.contains(data)));
         checkInColumn.setCellFactory(column -> new TableCell<>() {
             private final CheckBox checkBox = new CheckBox();
