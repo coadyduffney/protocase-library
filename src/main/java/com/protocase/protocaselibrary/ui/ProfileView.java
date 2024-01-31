@@ -27,7 +27,7 @@ public class ProfileView extends Stage {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profileView.fxml"));
             BorderPane borderPane = fxmlLoader.load();
             controller = fxmlLoader.getController();
-            controller.init(this);
+            controller.init();
 
             setScene(new Scene(borderPane));
 
