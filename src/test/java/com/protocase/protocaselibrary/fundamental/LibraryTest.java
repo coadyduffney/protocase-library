@@ -22,8 +22,10 @@ class LibraryTest {
          * - ISBN
          * - Genre
          * - Location
-     * 4. CHECK OUT BOOKS.
-     * 5. CHECK IN BOOKS
+     * 4. Add Book to Cart
+     * 5. Remove Book from Cart
+     * 6. CHECK OUT BOOKS.
+     * 7. CHECK IN BOOKS
      */
 
     @Test
