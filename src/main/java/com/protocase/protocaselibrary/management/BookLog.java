@@ -1,5 +1,6 @@
 package com.protocase.protocaselibrary.management;
 
+import com.protocase.protocaselibrary.fundamental.User;
 import com.protocase.protocaselibrary.interactive.BookCopy;
 
 import java.util.ArrayList;
@@ -30,4 +31,11 @@ public class BookLog {
     public List<BookCopy> getHistory() {
         return bookHistory;
     }
+
+    public List<BookCopy> getHistoryForUser(User user) {
+        return bookHistory.stream()
+                .filter(bookCopy -> bookCopy.getUserId().equals(user.getId()))
+                .toList();
+    }
+
 }

@@ -37,4 +37,17 @@ public class NotificationHelper {
                     .show();
         });
     }
+
+    public static void showCheckInNotification(int numOfCheckedInBooks) {
+        Platform.runLater(() -> {
+            Notifications
+                    .create()
+                    .text("Success! You checked in " + numOfCheckedInBooks + " books.")
+                    .graphic(new ImageView(new Image(NotificationHelper.class.getResourceAsStream("/images/favicon-32x32.png"))))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .owner(App.WINDOW)
+                    .hideAfter(Duration.seconds(1))
+                    .show();
+        });
+    }
 }

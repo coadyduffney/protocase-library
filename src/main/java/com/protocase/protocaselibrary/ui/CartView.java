@@ -13,7 +13,7 @@ public class CartView extends Stage {
     private CartViewController controller;
 
     public CartView() {
-        setTitle("My Shopping Cart");
+        setTitle("Cart");
         initOwner(App.WINDOW);
         initModality(Modality.WINDOW_MODAL);
         setOnCloseRequest(e -> hide());

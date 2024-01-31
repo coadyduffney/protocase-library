@@ -72,4 +72,11 @@ public class Library {
 
         books.clear();
     }
+
+    public void checkInBooks(List<BookCopy> books) {
+        for (BookCopy bookCopy : books) {
+            bookLog.removeEntry(bookCopy);
+        }
+    }
+
 }

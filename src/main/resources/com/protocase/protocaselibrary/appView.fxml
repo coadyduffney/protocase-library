@@ -17,37 +17,51 @@
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="buttonContainer" alignment="TOP_RIGHT" spacing="5.0" VBox.vgrow="NEVER">
+            <HBox VBox.vgrow="NEVER">
                <children>
-                  <StackPane alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="30.0" styleClass="badge" stylesheets="@../../../css/styles.css">
+                  <HBox HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="cartButton" mnemonicParsing="false" onAction="#openCart" prefWidth="100.0" text="My Cart" StackPane.alignment="TOP_RIGHT">
-                           <graphic>
-                              <FontIcon iconLiteral="fas-shopping-cart" />
-                           </graphic>
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                        </Button>
-                        <Label fx:id="cartItemsBadge" focusTraversable="false" pickOnBounds="false" styleClass="badge-label" text="0" StackPane.alignment="TOP_RIGHT">
+                        <Label fx:id="userNameLabel">
                            <font>
-                              <Font size="10.0" />
+                              <Font name="Segoe UI" size="18.0" />
                            </font>
-                           <cursor>
-                              <Cursor fx:constant="NONE" />
-                           </cursor>
                         </Label>
                      </children>
-                  </StackPane>
-                  <Button fx:id="profileButton" layoutX="690.0" layoutY="10.0" mnemonicParsing="false" onAction="#onProfile" prefWidth="100.0" text="My Profile">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-user" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="logInButton" mnemonicParsing="false" onAction="#onLoginLogout" prefWidth="100.0" text="Log In">
-                     <graphic>
-                        <FontIcon fx:id="logInIcon" iconLiteral="fas-sign-in-alt" />
-                     </graphic></Button>
+                  </HBox>
+                  <HBox fx:id="buttonContainer" alignment="TOP_RIGHT" spacing="5.0">
+                     <children>
+                        <StackPane alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="30.0" styleClass="badge" stylesheets="@../../../css/styles.css">
+                           <children>
+                              <Button fx:id="cartButton" mnemonicParsing="false" onAction="#openCart" prefWidth="100.0" text="My Cart" StackPane.alignment="TOP_RIGHT">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-shopping-cart" />
+                                 </graphic>
+                                 <StackPane.margin>
+                                    <Insets />
+                                 </StackPane.margin>
+                              </Button>
+                              <Label fx:id="cartItemsBadge" focusTraversable="false" pickOnBounds="false" styleClass="badge-label" text="0" StackPane.alignment="TOP_RIGHT">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="NONE" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <Button fx:id="profileButton" layoutX="690.0" layoutY="10.0" mnemonicParsing="false" onAction="#onProfile" prefWidth="100.0" text="My Profile">
+                           <graphic>
+                              <FontIcon iconLiteral="fas-user" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="logInButton" mnemonicParsing="false" onAction="#onLoginLogout" prefWidth="100.0" text="Log In">
+                           <graphic>
+                              <FontIcon fx:id="logInIcon" iconLiteral="fas-sign-in-alt" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
             <VBox>

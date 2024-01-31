@@ -8,10 +8,7 @@ import com.protocase.protocaselibrary.interactive.BookFilter;
 import com.protocase.protocaselibrary.interactive.Librarian;
 import com.protocase.protocaselibrary.interactive.UserSession;
 import com.protocase.protocaselibrary.management.Cart;
-import com.protocase.protocaselibrary.ui.BookCard;
-import com.protocase.protocaselibrary.ui.CartView;
-import com.protocase.protocaselibrary.ui.LoginForm;
-import com.protocase.protocaselibrary.ui.NotificationHelper;
+import com.protocase.protocaselibrary.ui.*;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -42,12 +39,18 @@ public class AppController {
     private BorderPane mainBorderPane;
 
     @FXML
+    private Label userNameLabel;
+
+    @FXML
     private TextField searchField;
     private FlexBoxPane bookGrid;
 
     public void init() {
         // Set up Librarian
         this.librarian = Library.getInstance().getLibrarian();
+
+        profileButton.setVisible(false);
+        profileButton.setManaged(false);
 
         // Set up key listener on searchField
         searchField.setOnKeyTyped(keyEvent -> {
@@ -62,9 +65,15 @@ public class AppController {
             if (newValue) {
                 logInButton.setText("Log Out");
                 logInIcon.setIconLiteral("fas-sign-out-alt");
+                userNameLabel.setText("Welcome, " + UserSession.getInstance().getUser().getFirstName());
+                profileButton.setVisible(true);
+                profileButton.setManaged(true);
             } else {
                 logInButton.setText("Log In");
                 logInIcon.setIconLiteral("fas-sign-in-alt");
+                userNameLabel.setText("");
+                profileButton.setVisible(false);
+                profileButton.setManaged(false);
             }
         });
 
@@ -90,6 +99,12 @@ public class AppController {
         String searchString = searchField.getText();
         List<Book> searchResults = librarian.searchBooks(new BookFilter(searchString));
         populateBookGrid(searchResults);
+    }
+
+    @FXML
+    void onProfile() {
+        ProfileView profileView = new ProfileView();
+        profileView.show();
     }
 
     @FXML

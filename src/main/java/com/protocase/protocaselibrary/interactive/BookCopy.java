@@ -2,6 +2,9 @@ package com.protocase.protocaselibrary.interactive;
 
 import com.protocase.protocaselibrary.fundamental.Book;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -55,5 +58,23 @@ public class BookCopy {
 
     public void setCheckOutDate(String checkOutDate) {
         this.checkOutDate = checkOutDate;
+    }
+
+    public boolean isOverdue() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date bookCheckInDate = dateFormat.parse(this.checkInDate);
+            Date today = new Date();
+
+            if (bookCheckInDate.before(today)) {
+                return true;
+            }
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        return false;
     }
 }
