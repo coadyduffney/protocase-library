@@ -21,7 +21,9 @@ public class BookLog {
     }
 
     public Optional<BookCopy> getEntryFor(BookCopy book) {
-        return Optional.empty();
+        return Optional.of(
+                bookHistory.get(bookHistory.indexOf(book))
+        );
     }
 
     public void removeEntry(BookCopy book) {

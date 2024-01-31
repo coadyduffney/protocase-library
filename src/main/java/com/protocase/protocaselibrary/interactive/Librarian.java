@@ -19,27 +19,27 @@ public class Librarian {
     }
 
     public void addNewBook(Book book) {
-
+        // TODO: implement
     }
 
     public void editBook(Book book) {
-
+        // TODO: implement
     }
 
     public void deleteBook(Book book) {
-
+        // TODO: implement
     }
 
     public void addNewUser(User user) {
-
+        // TODO: implement
     }
 
     public void editUser(User user) {
-
+        // TODO: implement
     }
 
     public void deleteUser(User user) {
-
+        // TODO: implement
     }
 
 }

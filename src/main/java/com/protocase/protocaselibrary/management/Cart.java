@@ -20,11 +20,7 @@ public class Cart {
     }
 
     public boolean addBook(BookCopy book) {
-        if (!bookList.contains(book)) {
-            return bookList.add(book);
-        }
-
-        return false;
+        return bookList.add(book);
     }
 
     public boolean removeBook(BookCopy book) {

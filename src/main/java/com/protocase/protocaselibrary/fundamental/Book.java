@@ -8,10 +8,6 @@ public class Book {
     private String genre;
     private String location;
 
-    public Book() {
-
-    }
-
     public Book(String id, String title, String author, String isbn, String genre, String location) {
         this.id = id;
         this.title = title;

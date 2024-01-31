@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class BookFilter {
     private final List<AbstractBookFilterStrategy> filterStrategies = new ArrayList();
-
     public BookFilter(String stringToFilter) {
         filterStrategies.add(new TitleBookFilterStrategy(stringToFilter));
         filterStrategies.add(new AuthorBookFilterStrategy(stringToFilter));
