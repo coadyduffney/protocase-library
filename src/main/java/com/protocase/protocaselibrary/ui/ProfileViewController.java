@@ -4,13 +4,14 @@ import com.protocase.protocaselibrary.fundamental.Library;
 import com.protocase.protocaselibrary.fundamental.User;
 import com.protocase.protocaselibrary.interactive.BookCopy;
 import com.protocase.protocaselibrary.interactive.UserSession;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,9 +22,8 @@ public class ProfileViewController {
     private TableView<BookCopy> tableView;
 
     @FXML
-    private Label userNameLabel;
-
-    private List<BookCopy> selectedBooks = new ArrayList<>();
+    private Button checkInBooksButton;
+    private ObservableList<BookCopy> selectedBooks = FXCollections.observableArrayList();
 
     private ProfileView profileView;
 
@@ -31,6 +31,7 @@ public class ProfileViewController {
         this.profileView = profileView;
         initializeTableView();
         refreshTableViewItems();
+        checkInBooksButton.disableProperty().bind(Bindings.isEmpty(selectedBooks));
     }
 
     private void refreshTableViewItems() {
