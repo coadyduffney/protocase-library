@@ -141,6 +141,8 @@ class LibraryTest {
     @Test
     void testCheckoutBook() {
         Library library = Library.getInstance();
+        library.getBookLog().getHistory().clear();
+
         library.logIn(new TestUser());
 
         BookFilter filter = new BookFilter("The Lord of the Rings");
@@ -169,6 +171,8 @@ class LibraryTest {
     @Test
     void testCheckInBook() {
         Library library = Library.getInstance();
+        library.getBookLog().getHistory().clear();
+
         TestUser user = new TestUser();
         library.logIn(user);
 
