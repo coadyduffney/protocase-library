@@ -18,6 +18,7 @@ import java.util.List;
  * @author Coady Duffney
  */
 public class ProfileViewController {
+    public static final String FX_ALIGNMENT_CENTER = "-fx-alignment: CENTER;";
     @FXML
     private TableView<BookCopy> tableView;
 
@@ -25,10 +26,7 @@ public class ProfileViewController {
     private Button checkInBooksButton;
     private ObservableList<BookCopy> selectedBooks = FXCollections.observableArrayList();
 
-    private ProfileView profileView;
-
-    public void init(ProfileView profileView) {
-        this.profileView = profileView;
+    public void init() {
         initializeTableView();
         refreshTableViewItems();
         checkInBooksButton.disableProperty().bind(Bindings.isEmpty(selectedBooks));
@@ -48,32 +46,32 @@ public class ProfileViewController {
         // Create columns
         TableColumn<BookCopy, String> titleColumn = new TableColumn<>("Title");
         titleColumn.setPrefWidth(155);
-        titleColumn.setStyle("-fx-alignment: CENTER;");
+        titleColumn.setStyle(FX_ALIGNMENT_CENTER);
         titleColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOriginal().getTitle()));
 
         TableColumn<BookCopy, String> authorColumn = new TableColumn<>("Author");
         authorColumn.setPrefWidth(120);
-        authorColumn.setStyle("-fx-alignment: CENTER;");
+        authorColumn.setStyle(FX_ALIGNMENT_CENTER);
         authorColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOriginal().getAuthor()));
 
         TableColumn<BookCopy, String> checkInDateColumn = new TableColumn<>("Check In Date");
         checkInDateColumn.setPrefWidth(100);
-        checkInDateColumn.setStyle("-fx-alignment: CENTER;");
+        checkInDateColumn.setStyle(FX_ALIGNMENT_CENTER);
         checkInDateColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCheckInDate()));
 
         TableColumn<BookCopy, String> checkOutDateColumn = new TableColumn<>("Check Out Date");
         checkOutDateColumn.setPrefWidth(100);
-        checkOutDateColumn.setStyle("-fx-alignment: CENTER;");
+        checkOutDateColumn.setStyle(FX_ALIGNMENT_CENTER);
         checkOutDateColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCheckOutDate()));
 
         TableColumn<BookCopy, Boolean> overdueColumn = new TableColumn<>("Overdue");
         overdueColumn.setPrefWidth(100);
-        overdueColumn.setStyle("-fx-alignment: CENTER;");
+        overdueColumn.setStyle(FX_ALIGNMENT_CENTER);
         overdueColumn.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isOverdue()));
 
         TableColumn<BookCopy, Boolean> checkInColumn = new TableColumn<>("Check In");
         checkInColumn.setPrefWidth(100);
-        checkInColumn.setStyle("-fx-alignment: CENTER;");
+        checkInColumn.setStyle(FX_ALIGNMENT_CENTER);
         checkInColumn.setCellValueFactory(data -> new SimpleBooleanProperty(selectedBooks.contains(data)));
         checkInColumn.setCellFactory(column -> new TableCell<>() {
             private final CheckBox checkBox = new CheckBox();
